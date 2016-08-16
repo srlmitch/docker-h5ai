@@ -9,9 +9,6 @@ RUN unzip _h5ai.zip -d /usr/share/h5ai
 
 ADD h5ai.nginx.conf /etc/nginx/sites-available/default
 
-ADD h5ai-path.patch patch
-RUN patch -p1 -u -d /usr/share/h5ai/_h5ai/private/php/core/ -i /patch && rm patch
-
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD supervisord -c /etc/supervisor/conf.d/supervisord.conf
 
